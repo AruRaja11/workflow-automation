@@ -10,8 +10,8 @@ const staticRoutes = new Map([
   ["/prospecting/", ["prospecting.html", "text/html; charset=utf-8"]],
   ["/css/styles.css", ["css/styles.css", "text/css; charset=utf-8"]],
   ["/js/app.js", ["js/app.js", "text/javascript; charset=utf-8"]],
-  ["/images/japan-artistic-3840x2160-25406.jpg", ["../images/japan-artistic-3840x2160-25406.jpg", "image/jpeg"]],
-  ["/images/itachi-uchiha-moon-3840x2160-25777.jpg", ["../images/itachi-uchiha-moon-3840x2160-25777.jpg", "image/jpeg"]],
+  ["/images/japan-artistic-3840x2160-25406.jpg", ["images/japan-artistic-3840x2160-25406.jpg", "image/jpeg"]],
+  ["/images/itachi-uchiha-moon-3840x2160-25777.jpg", ["images/itachi-uchiha-moon-3840x2160-25777.jpg", "image/jpeg"]],
 ]);
 
 function sendJson(response, statusCode, data) {

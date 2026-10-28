@@ -8,7 +8,7 @@ This frontend is a dependency-free static site served by Node.js.
 - `public/prospecting.html` contains the prospecting form.
 - `public/css/styles.css` contains the responsive styles.
 - `public/js/app.js` contains the form and page-navigation behavior.
-- `images/` contains the artwork used as the home page background and the prospecting intro panel.
+- `public/images/` contains the artwork used as the home page background and the prospecting intro panel. Keeping these assets under `public/` makes them available to Vercel's static deployment.
 - `server.js` serves the static assets and background image, and forwards form submissions to the Python API.
 
 The Previous runs menu loads completed runs from the backend. Select **Check executions** to retrieve the saved prospect records for that run.
