@@ -1,0 +1,13 @@
+{
+  "name": "client-acquisitions-frontend",
+  "version": "1.0.0",
+  "description": "Static prospecting frontend served by the built-in Node.js HTTP server.",
+  "private": true,
+  "engines": {
+    "node": ">=18.11"
+  },
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js"
+  }
+}

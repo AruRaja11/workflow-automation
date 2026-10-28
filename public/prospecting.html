@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#c62828">
+    <title>Start prospecting — Arun's workspace</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body class="prospecting-body">
+    <header class="topbar">
+      <a class="brand brand-link" href="/" aria-label="Arun's workspace home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 17.5 10.2 5l3.1 6.2L16 5l4 12.5h-4.1l-2.5-6-2.9 6H4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </span>
+        <span>Arun's workspace</span>
+      </a>
+      <nav class="topbar-nav" aria-label="Main navigation">
+        <details id="run-history" class="run-history">
+          <summary>
+            Previous runs
+            <span id="run-history-count" class="run-history-count" aria-label="0 saved runs">0</span>
+          </summary>
+          <div class="run-history-menu">
+            <p id="run-history-empty" class="run-history-empty" aria-live="polite">Loading previous runs...</p>
+            <ul id="run-history-list" class="run-history-list" aria-label="Saved prospecting runs"></ul>
+          </div>
+        </details>
+        <a class="workspace-tag" href="/">Home</a>
+      </nav>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> A smarter first step</div>
+        <div class="intro-copy">
+          <h1 id="intro-title">Find your next best client.</h1>
+          <p>Tell us who you want to reach. We'll shape a focused prospecting brief around your market and message.</p>
+          <div class="steps" aria-label="What happens next">
+            <div class="step"><span class="step-number">01</span><span>Define your ideal businesses</span></div>
+              <div class="step"><span class="step-number">02</span><span>Set your market and pitch</span></div>
+              <div class="step"><span class="step-number">03</span><span>Choose your search size</span></div>
+          </div>
+        </div>
+        <div class="intro-foot">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.5 4 5v4.2c0 3.8 2.6 6.5 6 8.3 3.4-1.8 6-4.5 6-8.3V5l-6-2.5Z" stroke="currentColor" stroke-width="1.4"/><path d="m7.5 9.8 1.7 1.7 3.5-3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Your details stay private and secure
+        </div>
+      </section>
+      <section class="form-panel" aria-labelledby="form-title">
+        <div class="form-heading">
+          <p class="form-kicker">Your prospecting brief</p>
+          <h2 id="form-title">Shape your prospect list</h2>
+          <p>Choose who to find, where to look, and how broad to search.</p>
+        </div>
+        <form id="business-form" aria-labelledby="form-title">
+          <section class="form-section" aria-labelledby="audience-title">
+            <div class="form-section-heading">
+              <span class="form-step" aria-hidden="true">01</span>
+              <div>
+                <h3 id="audience-title">Who do you want to reach?</h3>
+                <p>Add three kinds of businesses to search for.</p>
+              </div>
+            </div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="businessType1">Business type 1 <span class="field-hint">Required</span></label>
+                <input id="businessType1" name="businessType1" placeholder="e.g. Cafés" autocomplete="off" required>
+              </div>
+              <div class="field">
+                <label for="businessType2">Business type 2 <span class="field-hint">Required</span></label>
+                <input id="businessType2" name="businessType2" placeholder="e.g. Boutique hotels" autocomplete="off" required>
+              </div>
+              <div class="field field-wide">
+                <label for="businessType3">Business type 3 <span class="field-hint">Required</span></label>
+                <input id="businessType3" name="businessType3" placeholder="e.g. Local event venues" autocomplete="off" required>
+              </div>
+            </div>
+          </section>
+          <section class="form-section" aria-labelledby="market-title">
+            <div class="form-section-heading">
+              <span class="form-step" aria-hidden="true">02</span>
+              <div>
+                <h3 id="market-title">Where should we look?</h3>
+                <p>Set a location and the kind of outreach you have in mind.</p>
+              </div>
+            </div>
+            <div class="field-grid">
+              <div class="field">
+                <label for="location">Target location <span class="field-hint">Required</span></label>
+                <input id="location" name="location" placeholder="City, region, or country" autocomplete="address-level2" required>
+              </div>
+              <div class="field">
+                <label for="pitchType">Pitch type <span class="field-hint">Required</span></label>
+                <input id="pitchType" name="pitchType" placeholder="e.g. Introductory email" autocomplete="off" required>
+              </div>
+            </div>
+          </section>
+          <section class="form-section form-section-last" aria-labelledby="volume-title">
+            <div class="form-section-heading">
+              <span class="form-step" aria-hidden="true">03</span>
+              <div>
+                <h3 id="volume-title">Choose your search size</h3>
+                <p>Set the maximum number of places to look up for each type.</p>
+              </div>
+            </div>
+            <div class="field-grid">
+              <div class="field field-wide range-field">
+                <label for="placesToScrape">
+                  Places to scrape per business type
+                  <output id="places-value" class="range-value" for="placesToScrape">10 each</output>
+                </label>
+                <input id="placesToScrape" name="placesToScrape" type="range" min="1" max="100" step="1" value="10" aria-describedby="places-summary">
+                <p id="places-summary" class="range-summary" aria-live="polite">Search limit: up to 30 places total across 3 business types.</p>
+              </div>
+            </div>
+          </section>
+          <button id="submit-button" type="submit">
+            <span id="submit-label">Build my prospecting brief</span>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="form-note">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.7 7V5.3a3.3 3.3 0 0 1 6.6 0V7m-7.3 0h8v6.2H4V7Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            No spam. Just a sharper place to start.
+          </div>
+        </form>
+        <p id="result" class="submission-status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+    <section id="results-panel" class="results-panel" aria-labelledby="results-title" hidden>
+      <div class="results-content">
+        <div class="results-heading">
+          <div>
+            <p class="form-kicker">Your results</p>
+            <h2 id="results-title">Your prospect list</h2>
+            <p id="results-subtitle" class="results-subtitle">Review each business and choose your next step.</p>
+          </div>
+          <span id="results-count" class="results-count" aria-live="polite"></span>
+        </div>
+        <div class="results-toolbar">
+          <label class="results-search">
+            <span class="visually-hidden">Search prospects</span>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.7" cy="8.7" r="5.7" stroke="currentColor" stroke-width="1.5"/><path d="m13 13 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <input id="results-search" type="search" placeholder="Search by business, category, or location" autocomplete="off">
+          </label>
+          <label class="results-sort">
+            <span>Sort by</span>
+            <select id="results-sort">
+              <option value="relevance">Original order</option>
+              <option value="name">Business name</option>
+              <option value="rating">Highest rating</option>
+            </select>
+          </label>
+        </div>
+        <div id="results-list" class="results-list" aria-live="polite"></div>
+      </div>
+    </section>
+    <script src="/js/app.js" defer></script>
+  </body>
+</html>
