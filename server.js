@@ -4,6 +4,7 @@ const path = require("node:path");
 
 const port = Number(process.env.PORT) || 3000;
 const publicDirectory = path.join(__dirname, "public");
+const backendUrl = (process.env.BACKEND_URL || "https://workflow-automation-backend-1.onrender.com").replace(/\/+$/, "");
 const staticRoutes = new Map([
   ["/", ["index.html", "text/html; charset=utf-8"]],
   ["/prospecting", ["prospecting.html", "text/html; charset=utf-8"]],
@@ -65,7 +66,7 @@ const server = http.createServer((request, response) => {
       : null;
 
   if (request.method === "GET" && apiPath) {
-    fetch(`http://127.0.0.1:8000${apiPath}`)
+    fetch(`${backendUrl}${apiPath}`)
       .then(async (apiResponse) => {
         const result = await apiResponse.json();
         sendJson(response, apiResponse.status, result);
@@ -134,7 +135,7 @@ const server = http.createServer((request, response) => {
 
     try {
       const apiResponse = await fetch(
-        "http://127.0.0.1:8000/app/v1/outreach/generate",
+        `${backendUrl}/app/v1/outreach/generate`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

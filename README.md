@@ -21,7 +21,7 @@ Use Node.js 18.11 or newer:
 npm run dev
 ```
 
-Open `http://localhost:3000` for the home page or `http://localhost:3000/prospecting` for the form. The Python API must be running at `http://127.0.0.1:8000` to submit the prospecting form.
+Open `http://localhost:3000` for the home page or `http://localhost:3000/prospecting` for the form. Requests are forwarded to the deployed backend at `https://workflow-automation-backend-1.onrender.com`.
 
 For a non-watch server process, use:
 
@@ -30,3 +30,5 @@ npm start
 ```
 
 Set the `PORT` environment variable to change the frontend port.
+
+Set `BACKEND_URL` to override the deployed backend URL when using a different environment.
