@@ -7,12 +7,16 @@ const publicDirectory = path.join(__dirname, "public");
 const backendUrl = (process.env.BACKEND_URL || "https://workflow-automation-backend-1.onrender.com").replace(/\/+$/, "");
 const staticRoutes = new Map([
   ["/", ["index.html", "text/html; charset=utf-8"]],
+  ["/login", ["login.html", "text/html; charset=utf-8"]],
+  ["/login/", ["login.html", "text/html; charset=utf-8"]],
   ["/prospecting", ["prospecting.html", "text/html; charset=utf-8"]],
   ["/prospecting/", ["prospecting.html", "text/html; charset=utf-8"]],
   ["/css/styles.css", ["css/styles.css", "text/css; charset=utf-8"]],
   ["/js/app.js", ["js/app.js", "text/javascript; charset=utf-8"]],
+  ["/js/login.js", ["js/login.js", "text/javascript; charset=utf-8"]],
   ["/images/japan-artistic-3840x2160-25406.jpg", ["images/japan-artistic-3840x2160-25406.jpg", "image/jpeg"]],
   ["/images/itachi-uchiha-moon-3840x2160-25777.jpg", ["images/itachi-uchiha-moon-3840x2160-25777.jpg", "image/jpeg"]],
+  ["/images/monkey-luffy.jpg", ["images/monkey-luffy.jpg", "image/jpeg"]],
 ]);
 
 function sendJson(response, statusCode, data) {
@@ -77,6 +81,73 @@ const server = http.createServer((request, response) => {
           error: "Could not reach the Python API. Check that the backend is running.",
         });
       });
+    return;
+  }
+
+  if (request.method === "POST" && pathname === "/login") {
+    let body = "";
+    let bodyBytes = 0;
+    let bodyTooLarge = false;
+    request.setEncoding("utf8");
+    request.on("data", (chunk) => {
+      if (bodyTooLarge) {
+        return;
+      }
+
+      bodyBytes += Buffer.byteLength(chunk);
+      if (bodyBytes > 10_000) {
+        bodyTooLarge = true;
+        body = "";
+        return;
+      }
+
+      body += chunk;
+    });
+
+    request.on("end", async () => {
+      if (bodyTooLarge) {
+        sendJson(response, 413, { error: "Request body is too large." });
+        return;
+      }
+
+      let credentials;
+
+      try {
+        credentials = JSON.parse(body);
+      } catch {
+        sendJson(response, 400, { error: "Request body must be valid JSON." });
+        return;
+      }
+
+      if (
+        !credentials ||
+        typeof credentials !== "object" ||
+        Array.isArray(credentials) ||
+        typeof credentials.username !== "string" ||
+        typeof credentials.password !== "string"
+      ) {
+        sendJson(response, 400, { error: "Username and password are required." });
+        return;
+      }
+
+      const loginParams = new URLSearchParams({
+        username: credentials.username,
+        password: credentials.password,
+      });
+
+      try {
+        const apiResponse = await fetch(
+          `${backendUrl}/app/v1/login/login?${loginParams.toString()}`
+        );
+        const result = await apiResponse.json();
+        sendJson(response, apiResponse.status, result);
+      } catch (error) {
+        console.error("Could not reach the Python login API:", error);
+        sendJson(response, 502, {
+          error: "Could not reach the Python API. Check that the backend is running.",
+        });
+      }
+    });
     return;
   }
 

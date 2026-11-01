@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#c62828">
+    <meta name="description" content="Log in to Arun's workspace and start prospecting.">
+    <title>Log in — Arun's workspace</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body class="login-body">
+    <header class="topbar">
+      <a class="brand brand-link" href="/" aria-label="Arun's workspace home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 17.5 10.2 5l3.1 6.2L16 5l4 12.5h-4.1l-2.5-6-2.9 6H4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </span>
+        <span>Arun's workspace</span>
+      </a>
+      <nav class="topbar-nav" aria-label="Main navigation">
+        <a class="workspace-tag" href="/">Home</a>
+      </nav>
+    </header>
+
+    <main class="login-page">
+      <section class="login-panel" aria-labelledby="login-title">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Welcome back</div>
+        <h1 id="login-title">Log in to start prospecting.</h1>
+        <p class="login-intro">Access your workspace and turn your next market idea into a focused prospect list.</p>
+        <form id="login-form">
+          <div class="login-field">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" autocomplete="username" placeholder="Enter your username" required>
+          </div>
+          <div class="login-field">
+            <div class="login-label-row">
+              <label for="password">Password</label>
+              <a href="#login-form">Forgot password?</a>
+            </div>
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="login-submit">Log in <span aria-hidden="true">→</span></button>
+          <p id="login-status" class="login-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="login-back">New to the workspace? <a href="/login">Create an account</a></p>
+      </section>
+      <aside class="login-aside" aria-label="Workspace benefits">
+        <p class="home-card-kicker">Your focused workspace</p>
+        <h2>Make every outreach step count.</h2>
+        <ul class="home-benefits">
+          <li><span class="benefit-check" aria-hidden="true">✓</span><span>Find businesses that match your market</span></li>
+          <li><span class="benefit-check" aria-hidden="true">✓</span><span>Prepare thoughtful outreach messages</span></li>
+          <li><span class="benefit-check" aria-hidden="true">✓</span><span>Keep your prospecting work organized</span></li>
+        </ul>
+      </aside>
+    </main>
+    <script src="/js/login.js"></script>
+  </body>
+</html>
